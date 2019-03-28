@@ -6,6 +6,7 @@ from keras.utils import np_utils
 #from skimage.transform import resize
 import tensorflow as tf
 import csv
+import pandas as pd
 
 def pre_process_image(image, training):
     if training:
@@ -25,7 +26,7 @@ def pre_process_image(image, training):
 def training():
     X = []
     for j in range(1, 19):
-        image_data_path = '/media/newhd/Kinect Project_new/data_mapped/sub'+ str(j) + '/'
+        image_data_path = '/media/newhd/Kinect Project/data_mapped/sub'+ str(j) + '/'
         for i in range(1, 130):
             w = 10000 + i
             st = str(w)
@@ -34,10 +35,10 @@ def training():
             if img is None:
                 continue
             else:
-                print(np.shape(img))
                 X.append(img)
     X = np.array(X)
-    #dummy_y = np_utils.to_categorical(y)
+    y_data = pd.read_csv('/media/newhd/Kinect Project/data_mapped/labels.csv')
+    
 
 
 def main():

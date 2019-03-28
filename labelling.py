@@ -5,7 +5,7 @@ import csv
 def labelling():
     dict = []
     for j in range(1, 19):
-        depth_path = '/home/akshit/Desktop/KinectProject_new/data/sub' + str(j) + '/DepthFrame'
+        depth_path = '/media/newhd/Kinect Project/data/sub' + str(j) + '/DepthFrame'
         d1 = depth_path + '0004.mat'
         d2 = depth_path + '0035.mat'
 
@@ -45,12 +45,8 @@ def labelling():
                 label = 0
 
         dict.append({"subject": 'sub' + str(j), "label" : label})
-
-
-
-
         #print(difference_matrix)
-    with open('/home/akshit/Desktop/KinectProject_new/data_mapped/labels.csv', 'w') as file:
+    with open('/media/newhd/Kinect Project/data_mapped/labels.csv', 'w') as file:
         fields = ['subject', 'label']
         writer = csv.DictWriter(file, fieldnames=fields)
         writer.writeheader()
@@ -58,7 +54,7 @@ def labelling():
     print(dict)
 
 def main():
-    main()
+    labelling()
 
 if __name__ == "__main__":
     main()
