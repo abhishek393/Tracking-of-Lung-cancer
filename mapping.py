@@ -5,7 +5,7 @@ import numpy as np
 
 def mapping():
     for j in range(1, 19):
-        image_data_path = 'I:\Kinect Project_new\data\sub' + str(j) + '\\'
+        image_data_path = '/media/newhd/Kinect Project/data/sub' + str(j) + '/'
         for i in range(1, 130):
             w = 10000 + i
             st = str(w)
@@ -27,14 +27,12 @@ def mapping():
             M = cv2.getRotationMatrix2D(center, angle90, scale)
 
             rotated90 = cv2.warpAffine(image, M, (h, w))
-
             if j < 9:
-                rotated90 = rotated90[215:439, 100:324]
+                rotated90 = rotated90[200:424, 100:324]
             else:
                 rotated90 = rotated90[155:379, 100:324]
-            # print(np.shape(rotated90))
             n = st[1:]
-            mapped_path = 'I:\Kinect Project_new\data_mapped\sub%d\MappedFrame%s.jpg'%(j, n)
+            mapped_path = '/media/newhd/Kinect Project/data_mapped/sub%d/MappedFrame%s.jpg'%(j, n)
             cv2.imwrite(mapped_path, rotated90)
 
 
